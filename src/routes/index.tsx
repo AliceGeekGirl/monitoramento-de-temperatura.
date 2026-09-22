@@ -153,7 +153,7 @@ function CartaoDispositivo({
           {ligado ? "Ligado" : "Desligado"}
         </span>
       </div>
-etiqueta    </Cartao>
+    </Cartao>
   );
 }
 
