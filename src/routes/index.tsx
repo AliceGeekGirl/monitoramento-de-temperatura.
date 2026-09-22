@@ -149,7 +149,7 @@ function CartaoDispositivo({
         />
         <span
           className={`text-2xl font-semibold ${
-            ligado ? corQuandoLigado : "text-muted-foreground"
+            ligado ? `text-${corQuandoLigado}` : "text-muted-foreground"
           }`}
         >
           {ligado ? "Ligado" : "Desligado"}
