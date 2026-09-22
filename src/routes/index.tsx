@@ -177,7 +177,7 @@ function CartaoControle() {
         </div>
         <div className="flex items-baseline justify-between">
           <span className="text-sm text-muted-foreground">
-            Faixa de histerese
+            Faixa de controle (histerese)
           </span>
           <span className="text-2xl font-bold text-foreground">
             {limiteInferior} – {limiteSuperior} °C
