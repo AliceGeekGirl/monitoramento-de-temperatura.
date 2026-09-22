@@ -226,12 +226,14 @@ function PainelMonitoramento() {
           <CartaoDispositivo
             nome="Heater (aquecedor)"
             ligado={heaterLigado}
-            corQuandoLigado="bg-heater text-heater"
+            corBolinha="bg-heater"
+            corTexto="text-heater"
           />
           <CartaoDispositivo
             nome="Ventilador"
             ligado={ventiladorLigado}
-            corQuandoLigado="bg-ventilador text-ventilador"
+            corBolinha="bg-ventilador"
+            corTexto="text-ventilador"
           />
         </div>
 
