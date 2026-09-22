@@ -76,7 +76,7 @@
  * - card: cartões, um azul-escuro um pouco mais claro que o fundo
  * - foreground: textos em tom quase branco
  * - border: bordas discretas, azul acinzentado
- * - temp-*/heater/ventilador: cores de indicação mantidas
+ * - temp-frio, temp-ok, etc: cores de indicação mantidas
  */
 :root {
   --radius: 0.625rem;
