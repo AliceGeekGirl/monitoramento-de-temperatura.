@@ -38,14 +38,16 @@ const ventiladorLigado = dados.temperatura > limiteSuperior;
 // Cada faixa de temperatura recebe uma cor e um rótulo para
 // facilitar a leitura rápida do painel.
 // ============================================================
+// A cor segue a mesma faixa do controle: fora da faixa para baixo
+// é frio, para cima é quente, e dentro da faixa é agradável.
 function classificarTemperatura(temp: number) {
-  if (temp < 18) {
+  if (temp < limiteInferior) {
     return { rotulo: "Frio", classe: "text-temp-frio" };
   }
-  if (temp <= 28) {
-    return { rotulo: "Agradável", classe: "text-temp-ok" };
+  if (temp > limiteSuperior) {
+    return { rotulo: "Quente", classe: "text-temp-quente" };
   }
-  return { rotulo: "Quente", classe: "text-temp-quente" };
+  return { rotulo: "Agradável", classe: "text-temp-ok" };
 }
 
 const classificacao = classificarTemperatura(dados.temperatura);
