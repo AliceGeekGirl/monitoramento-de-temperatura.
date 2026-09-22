@@ -132,11 +132,13 @@ function CartaoUmidade() {
 function CartaoDispositivo({
   nome,
   ligado,
-  corQuandoLigado,
+  corBolinha,
+  corTexto,
 }: {
   nome: string;
   ligado: boolean;
-  corQuandoLigado: string;
+  corBolinha: string; // classe de FUNDO da bolinha quando ligado
+  corTexto: string; // classe de COR DO TEXTO quando ligado
 }) {
   return (
     <Cartao titulo={nome}>
@@ -144,12 +146,12 @@ function CartaoDispositivo({
         {/* Bolinha colorida: acesa quando o dispositivo está ligado */}
         <span
           className={`h-4 w-4 rounded-full ${
-            ligado ? corQuandoLigado : "bg-muted-foreground/30"
+            ligado ? corBolinha : "bg-muted-foreground/30"
           }`}
         />
         <span
           className={`text-2xl font-semibold ${
-            ligado ? `text-${corQuandoLigado}` : "text-muted-foreground"
+            ligado ? corTexto : "text-muted-foreground"
           }`}
         >
           {ligado ? "Ligado" : "Desligado"}
