@@ -7,8 +7,9 @@ import { createFileRoute } from "@tanstack/react-router";
 // O ESP32 disponibiliza as leituras no caminho /dados da rede
 // local dele. A interface busca esse endereço periodicamente
 // usando a função fetch() do próprio navegador.
+// IP real do ESP32 na rede Wi-Fi compartilhada.
 // ============================================================
-const URL_ESP32 = "http://192.168.4.1/dados";
+const URL_ESP32 = "http://192.168.62.55/dados";
 
 // Intervalo entre as buscas, em milissegundos (2 segundos).
 const INTERVALO_BUSCA_MS = 2000;
