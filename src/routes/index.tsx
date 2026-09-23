@@ -10,7 +10,7 @@ import { createFileRoute } from "@tanstack/react-router";
 const dados = {
   temperatura: 27.4, // temperatura em °C (viria do DHT11)
   umidade: 58, // umidade relativa em % (viria do DHT11)
-  temperaturaDesejada: 25, // temperatura alvo do controle, em °C
+  temperaturaDesejada: 23, // temperatura alvo do controle, em °C
   histerese: 1, // tolerância do controle, em °C
   sistemaAtivo: true, // se o sistema está em funcionamento
 };
