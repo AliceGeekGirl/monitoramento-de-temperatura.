@@ -224,7 +224,7 @@ function PainelMonitoramento() {
           <CartaoUmidade />
           <CartaoControle />
           <CartaoDispositivo
-            nome="Heater (aquecedor)"
+            nome="Aquecedor (Heater)"
             ligado={heaterLigado}
             corBolinha="bg-heater"
             corTexto="text-heater"
