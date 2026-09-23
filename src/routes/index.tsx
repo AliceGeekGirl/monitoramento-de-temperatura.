@@ -128,8 +128,11 @@ function CartaoUmidade() {
   );
 }
 
-// Cartão de estado (ligado/desligado) do Heater e do Ventilador.
-function CartaoDispositivo({
+// Item individual de dispositivo: bolinha colorida (acesa quando o
+// dispositivo está ligado) e texto "Ligado" ou "Desligado".
+// Este item não tem cartão próprio — ele fica dentro do cartão
+// "Dispositivos", ao lado do outro item.
+function ItemDispositivo({
   nome,
   ligado,
   corBolinha,
@@ -141,21 +144,44 @@ function CartaoDispositivo({
   corTexto: string; // classe de COR DO TEXTO quando ligado
 }) {
   return (
-    <Cartao titulo={nome}>
-      <div className="mt-2 flex items-center gap-3">
-        {/* Bolinha colorida: acesa quando o dispositivo está ligado */}
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-sm font-medium text-muted-foreground">{nome}</span>
+      <div className="flex items-center gap-2">
         <span
           className={`h-4 w-4 rounded-full ${
             ligado ? corBolinha : "bg-muted-foreground/30"
           }`}
         />
         <span
-          className={`text-2xl font-semibold ${
+          className={`text-xl font-semibold ${
             ligado ? corTexto : "text-muted-foreground"
           }`}
         >
           {ligado ? "Ligado" : "Desligado"}
         </span>
+      </div>
+    </div>
+  );
+}
+
+// Cartão único com o estado dos dois dispositivos, um ao lado do outro.
+function CartaoDispositivos() {
+  return (
+    <Cartao titulo="Dispositivos">
+      {/* Duas colunas iguais: Aquecedor à esquerda, Ventilador à direita */}
+      <div className="mt-3 grid grid-cols-2 gap-4">
+        <ItemDispositivo
+          nome="Aquecedor (Heater)"
+          ligado={heaterLigado}
+          corBolinha="bg-heater"
+          corTexto="text-heater"
+        />
+        <ItemDispositivo
+          nome="Ventilador"
+          ligado={ventiladorLigado}
+          corBolinha="bg-ventilador"
+          corTexto="text-ventilador"
+        />
       </div>
     </Cartao>
   );
@@ -223,18 +249,7 @@ function PainelMonitoramento() {
           <CartaoTemperatura />
           <CartaoUmidade />
           <CartaoControle />
-          <CartaoDispositivo
-            nome="Aquecedor (Heater)"
-            ligado={heaterLigado}
-            corBolinha="bg-heater"
-            corTexto="text-heater"
-          />
-          <CartaoDispositivo
-            nome="Ventilador"
-            ligado={ventiladorLigado}
-            corBolinha="bg-ventilador"
-            corTexto="text-ventilador"
-          />
+          <CartaoDispositivos />
         </div>
 
         {/* Aviso de que os dados ainda são simulados */}
