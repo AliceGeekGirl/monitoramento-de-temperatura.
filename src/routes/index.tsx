@@ -10,27 +10,22 @@ import { createFileRoute } from "@tanstack/react-router";
 const dados = {
   temperatura: 27.4, // temperatura em °C (viria do DHT11)
   umidade: 58, // umidade relativa em % (viria do DHT11)
-  temperaturaDesejada: 25, // temperatura alvo do controle, em °C
-  histerese: 1, // tolerância do controle, em °C
+  temperaturaDesejada: 23, // temperatura alvo do controle, em °C
+  limiteInferior: 20, // limite inferior da faixa de controle, em °C
+  limiteSuperior: 25, // limite superior da faixa de controle, em °C
   sistemaAtivo: true, // se o sistema está em funcionamento
 };
-
-// Limites da faixa de histerese: o controle tenta manter a
-// temperatura DENTRO desta faixa (desejada - histerese até
-// desejada + histerese).
-const limiteInferior = dados.temperaturaDesejada - dados.histerese; // 24 °C
-const limiteSuperior = dados.temperaturaDesejada + dados.histerese; // 26 °C
 
 // ============================================================
 // LÓGICA DE CONTROLE (SIMULADA)
 // ------------------------------------------------------------
 // Mesma lógica que o ESP32 usará depois, com histerese:
-// - Muito FRIO  (abaixo do limite inferior) -> liga o Heater
-// - Muito QUENTE (acima do limite superior) -> liga o Ventilador
-// - Dentro da faixa -> tudo desligado
+// - Muito FRIO  (abaixo do limite inferior, 20 °C) -> liga o Heater
+// - Muito QUENTE (acima do limite superior, 25 °C) -> liga o Ventilador
+// - Dentro da faixa (20 a 25 °C) -> tudo desligado
 // ============================================================
-const heaterLigado = dados.temperatura < limiteInferior;
-const ventiladorLigado = dados.temperatura > limiteSuperior;
+const heaterLigado = dados.temperatura < dados.limiteInferior;
+const ventiladorLigado = dados.temperatura > dados.limiteSuperior;
 
 // ============================================================
 // CLASSIFICAÇÃO DA TEMPERATURA (Termômetro Colorido)
