@@ -249,18 +249,7 @@ function PainelMonitoramento() {
           <CartaoTemperatura />
           <CartaoUmidade />
           <CartaoControle />
-          <CartaoDispositivo
-            nome="Aquecedor (Heater)"
-            ligado={heaterLigado}
-            corBolinha="bg-heater"
-            corTexto="text-heater"
-          />
-          <CartaoDispositivo
-            nome="Ventilador"
-            ligado={ventiladorLigado}
-            corBolinha="bg-ventilador"
-            corTexto="text-ventilador"
-          />
+          <CartaoDispositivos />
         </div>
 
         {/* Aviso de que os dados ainda são simulados */}
