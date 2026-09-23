@@ -289,15 +289,23 @@ function PainelMonitoramento() {
         }
 
         // Converte o corpo da resposta (texto) em objeto JavaScript.
-        const json: DadosESP32 = await resposta.json();
+        const json = await resposta.json();
 
         if (cancelado) return;
 
+        // Garante que temperatura e umidade sejam números válidos.
+        // Se vierem vazios ou inválidos, tratamos como falha de leitura.
+        const temperaturaLida = Number(json?.temperatura);
+        const umidadeLida = Number(json?.umidade);
+        if (Number.isNaN(temperaturaLida) || Number.isNaN(umidadeLida)) {
+          throw new Error("Leitura inválida recebida do ESP32");
+        }
+
         setDados({
-          temperatura: json.temperatura,
-          umidade: json.umidade,
-          aquecedor: Boolean(json.aquecedor),
-          ventilador: Boolean(json.ventilador),
+          temperatura: temperaturaLida,
+          umidade: umidadeLida,
+          aquecedor: Boolean(json?.aquecedor),
+          ventilador: Boolean(json?.ventilador),
         });
         setConectado(true);
       } catch {
