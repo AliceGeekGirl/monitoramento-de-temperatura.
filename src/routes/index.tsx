@@ -36,10 +36,10 @@ const ventiladorLigado = dados.temperatura > dados.limiteSuperior;
 // A cor segue a mesma faixa do controle: fora da faixa para baixo
 // é frio, para cima é quente, e dentro da faixa é agradável.
 function classificarTemperatura(temp: number) {
-  if (temp < limiteInferior) {
+  if (temp < dados.limiteInferior) {
     return { rotulo: "Frio", classe: "text-temp-frio" };
   }
-  if (temp > limiteSuperior) {
+  if (temp > dados.limiteSuperior) {
     return { rotulo: "Quente", classe: "text-temp-quente" };
   }
   return { rotulo: "Agradável", classe: "text-temp-ok" };
@@ -201,7 +201,7 @@ function CartaoControle() {
             Faixa de controle (histerese)
           </span>
           <span className="text-2xl font-bold text-foreground">
-            {limiteInferior} – {limiteSuperior} °C
+            {dados.limiteInferior} – {dados.limiteSuperior} °C
           </span>
         </div>
       </div>
