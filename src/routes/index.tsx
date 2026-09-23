@@ -18,8 +18,8 @@ const dados = {
 // Limites da faixa de histerese: o controle tenta manter a
 // temperatura DENTRO desta faixa (desejada - histerese até
 // desejada + histerese).
-const limiteInferior = dados.temperaturaDesejada - dados.histerese; // 24 °C
-const limiteSuperior = dados.temperaturaDesejada + dados.histerese; // 26 °C
+const limiteInferior = dados.temperaturaDesejada - dados.histerese; // 22 °C
+const limiteSuperior = dados.temperaturaDesejada + dados.histerese; // 24 °C
 
 // ============================================================
 // LÓGICA DE CONTROLE (SIMULADA)
