@@ -1,76 +1,85 @@
-# Monitoramento de Temperatura.
+# 🌡️ Painel de Monitoramento e Controle de Temperatura (ESP32)
 
-Crie um site simples para o meu projeto de Monitoramento e Controle de Temperatura com ESP32.
+Este repositório contém a **interface web (Dashboard)** desenvolvida para o projeto de **Monitoramento e Controle de Temperatura com ESP32**. 
 
-Sou iniciante no Lovable e nunca utilizei a plataforma. Quero começar apenas pelo desenvolvimento da interface do site. Não faça integração com ESP32, sensores, localhost ou banco de dados neste momento. Use dados fictícios para demonstrar o funcionamento da interface.
+> 📌 **Nota de Créditos:** A ideia conceitual e os requisitos do projeto foram fornecidos como parte do escopo proposto para estudo, ficando sob minha responsabilidade o projeto da interface, organização do código web e futuras integrações.
 
-Contexto do projeto
+---
 
-O projeto utiliza um sensor DHT11 para medir temperatura e umidade. O ESP32 será responsável por receber as leituras e controlar duas saídas:
+## 📋 Sobre o Projeto
 
-Heater (aquecedor), acionado por um relé.
+O objetivo principal deste projeto é criar uma interface amigável e intuitiva para monitorar variáveis ambientais e visualizar o estado de atuadores em tempo real. 
 
-Ventilador pequeno, utilizado para resfriar.
+### Contexto do Sistema Hardware (Físico)
+O projeto físico utiliza um **ESP32** conectado a um sensor **DHT11** para monitorar a temperatura e umidade. O sistema conta com uma lógica de **controle de temperatura com histerese**, atuando sobre dois dispositivos:
+* 🔴 **Heater (Aquecedor):** Acionado via relé quando a temperatura cai abaixo do limite inferior.
+* 🔵 **Ventilador:** Acionado para resfriamento quando a temperatura ultrapassa o limite superior.
 
-O projeto terá uma lógica de controle de temperatura com histerese, mas a integração com o hardware será feita posteriormente.
+---
 
-O que o site deve mostrar
+## 🎨 A Interface Web (Frontend)
 
-Temperatura atual: mostrar a temperatura em graus Celsius, usando um valor fictício.
+Nesta primeira etapa do desenvolvimento, o foco foi **exclusivamente o design e a experiência da interface (UI/UX)**, utilizando dados fictícios/simulados para validar o layout antes da integração com o hardware, sensores ou banco de dados.
 
-Umidade atual: mostrar a umidade em porcentagem.
+### Destaques e Funcionalidades do Dashboard:
+* **Leituras Atuais:** Exibição clara de Temperatura (°C) e Umidade (%).
+* **Indicação Visual da Temperatura:** Cores dinâmicas e intuitivas baseadas na faixa de temperatura (inspirado no conceito do *Termômetro Colorido*).
+* **Estado dos Atuadores:** Status visual em tempo real (Ligado/Desligado) do *Heater* e do *Ventilador*.
+* **Parâmetros de Controle:** Exibição da Temperatura Desejada (setpoint) e da Faixa de Histerese configurada.
+* **Status do Sistema:** Indicador visual do estado operacional do monitoramento.
+* **Layout Responsivo:** Estruturação baseada em cartões (*cards*), organizada para fácil visualização em computadores.
 
-Indicação visual da temperatura: utilizar uma indicação simples baseada na temperatura, inspirada no projeto Termômetro Colorido.
+---
 
-Estado do Heater: mostrar se está ligado ou desligado.
+## 🛠️ Tecnologias Utilizadas
 
-Estado do Ventilador: mostrar se está ligado ou desligado.
+* **[Lovable](https://lovable.dev/):** Plataforma utilizada para prototipagem rápida e geração inicial da interface web.
+* **HTML5 / CSS3 / JavaScript:** Estruturação, estilização e lógica de simulação de dados do frontend.
+* **Node.js & npm:** Gerenciamento de dependências e ambiente de execução local.
 
-Temperatura desejada: exibir um valor de referência, por exemplo, 25 °C.
+---
 
-Faixa de histerese: mostrar os limites de temperatura utilizados no controle.
+## 🚀 Como Executar o Projeto Localmente
 
-Status do sistema: indicar se o sistema está em funcionamento.
+Se você deseja clonar e rodar a interface na sua máquina local, siga os passos abaixo:
 
-Estilo visual
+### Pré-requisitos
+Certifique-se de ter o **Node.js** e o **npm** instalados em seu computador.
 
-Interface simples, organizada e fácil de entender.
+### Passo a passo
 
-Design de um painel de monitoramento.
+1. **Clone o repositório:**
+   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   cd nome-do-repositorio
 
-Não precisa ser muito bonito ou sofisticado.
+2. **Instale as dependências:**
+   npm install
 
-Utilizar cartões para apresentar os dados.
+3. **Inicie o servidor de desenvolvimento:**
+   npm run dev
 
-Cores intuitivas para temperatura, heater e ventilador.
+4. **Acesse no navegador:**
+   Abra o endereço indicado no seu terminal (geralmente http://localhost:5173).
 
-Layout responsivo para computador.
+---
 
-Evitar animações exageradas e elementos desnecessários.
+## 📐 Organização do Código
 
-Importante
+O código foi construído com foco em legibilidade e facilidade de manutenção para estudantes de **Engenharia da Computação**:
+* **Componentes Limpos:** Estrutura modular para separação das responsabilidades visuais.
+* **Dados Simulados:** Isolamento dos valores fictícios para facilidade de testes antes do vínculo com o ESP32.
+* **Estilização Clara:** Utilização de classes intuitivas para visualização imediata do status de cada elemento.
 
-Quero que o código seja organizado e fácil de compreender para uma estudante de Engenharia da Computação que está aprendendo desenvolvimento Web.
+---
 
-Crie a primeira versão do site com dados simulados. Não implemente a comunicação com o ESP32 agora. Primeiro quero visualizar e testar a interface.
+## 💻 Desenvolvimento com Lovable
 
-This project was built with [Lovable](https://lovable.dev).
+Este projeto foi gerado e estruturado inicialmente através do Lovable:
+* **Desenvolvimento Ágil:** Permitiu a criação rápida da interface focando nos componentes visuais.
+* **Sincronização Direta:** Alterações realizadas na plataforma são refletidas diretamente neste repositório.
 
-## Build with Lovable
+---
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/0cb77b56-8047-4246-b97d-3cb9fd794f56).
+## 📜 Licença
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+Este projeto é destina-se a fins educacionais e de aprendizado em Engenharia da Computação e desenvolvimento de interfaces.
